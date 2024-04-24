@@ -69,11 +69,18 @@ class roomController extends AdminController
     {
         $form = new Form(new room());
 
-        $form->textarea('name', __('Name'));
-        $form->text('avaliability', __('Avaliability'));
+        $form->text('name', __('Name'))->rules('required|min:4');
+
+        $form->radio('avaliability', __('Avaliability'))->options([
+            'Available' =>'Available',
+            'Not available' =>'Not available',
+        ])->rules('required');
+
         $form->number('price', __('Price'));
         $form->textarea('services', __('Services'));
         $form->textarea('details', __('Details'));
+        
+        // $form->text('Biralo', 'label')->rules('required|min:10');
 
         $form->tools(function (Form\Tools $tools) {
 
@@ -87,11 +94,33 @@ class roomController extends AdminController
             // $tools->disableView();
         
             // Add a button, the argument can be a string, or an instance of the object that implements the Renderable or Htmlable interface
-            // $tools->add('<a class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>&nbsp;&nbsp;delete</a>');
+            $tools->add('<a class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>&nbsp;&nbsp;jovic</a>');
         });
         
 
 
+        
+                $form->footer(function ($footer) {
+
+                    // disable reset btn
+                    $footer->disableReset();
+
+                    // disable submit btn
+                    // $footer->disableSubmit();
+
+                    // disable `View` checkbox
+                    
+
+                    // disable `Continue editing` checkbox
+                    $footer->disableEditingCheck();
+
+                    // disable `Continue Creating` checkbox
+                    $footer->disableCreatingCheck();
+
+                });
+
+
+                
         return $form;
     }
 }
