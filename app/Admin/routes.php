@@ -13,5 +13,6 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
     $router->resource('rooms', roomController::class);
+    $router->resource('buildings', buildingController::class);
 
 });
