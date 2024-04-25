@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('rooms_table', function (Blueprint $table) {
-            $table->foreignIdFor(buildings_table::class); //Here we are creating a column for room to act as a foregin Id in for building Table
+            // $table->foreignIdFor(buildings_table::class); //Here we are creating a column for room to act as a foregin Id in for building Table
+            $table->foreignId('building_id')->references('id')->on('buildings_table')->onDelete('cascade');
+            
         });
     }
 

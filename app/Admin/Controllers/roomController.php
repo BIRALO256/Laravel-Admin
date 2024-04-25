@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Models\room;
+use App\Models\building;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -75,6 +76,9 @@ class roomController extends AdminController
             'Available' =>'Available',
             'Not available' =>'Not available',
         ])->rules('required');
+
+        $buildings = Building::all()->pluck('name','id');//storing the  building got from the database in buldings varaible
+        $form->select('building_id','select Building')->options($buildings);
 
         $form->number('price', __('Price'));
         $form->textarea('services', __('Services'));
