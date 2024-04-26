@@ -86,7 +86,7 @@ class roomController extends AdminController
         
         // $form->text('Biralo', 'label')->rules('required|min:10');
 
-        $form->tools(function (Form\Tools $tools) {
+        $form->tools(function (Form\Tools $tools) { // if you want to control the tools on your page
 
             // Disable `List` btn.
             // $tools->disableList();
