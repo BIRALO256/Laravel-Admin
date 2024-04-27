@@ -83,6 +83,8 @@ class roomController extends AdminController
         $form->number('price', __('Price'));
         $form->textarea('services', __('Services'));
         $form->textarea('details', __('Details'));
+
+        $form->confirm('Are you sure you want to save this page?', 'edit');
         
         // $form->text('Biralo', 'label')->rules('required|min:10');
 
